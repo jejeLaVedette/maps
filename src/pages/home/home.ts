@@ -52,8 +52,9 @@ export class HomePage {
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
-    google.maps.event.addListener(marker, 'drag', function (evt) {
-      console.log("marker is being dragged");
-    });
+
+    google.maps.event.addListener(marker, 'dragend', () => {
+      alert(marker.getPosition())
+    }); 
   }
 }
