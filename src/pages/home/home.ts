@@ -38,7 +38,8 @@ export class HomePage {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+      position: this.map.getCenter(),
+      draggable: true
     });
     let content = "<h4>Information!</h4>";
     this.addInfoWindow(marker, content);
@@ -50,6 +51,9 @@ export class HomePage {
     });
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
+    });
+    google.maps.event.addListener(marker, 'drag', function (evt) {
+      console.log("marker is being dragged");
     });
   }
 }
